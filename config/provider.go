@@ -6,8 +6,16 @@ import (
 
 	ujconfig "github.com/crossplane/upjet/v2/pkg/config"
 
-	nullCluster "github.com/eaglesemanation/provider-digitalocean/config/cluster/null"
-	nullNamespaced "github.com/eaglesemanation/provider-digitalocean/config/namespaced/null"
+	dropletCluster "github.com/eaglesemanation/provider-digitalocean/config/cluster/droplet"
+	imageCluster "github.com/eaglesemanation/provider-digitalocean/config/cluster/image"
+	reservedipCluster "github.com/eaglesemanation/provider-digitalocean/config/cluster/reservedip"
+	reservedipv6Cluster "github.com/eaglesemanation/provider-digitalocean/config/cluster/reservedipv6"
+	sshkeyCluster "github.com/eaglesemanation/provider-digitalocean/config/cluster/sshkey"
+	dropletNamespaced "github.com/eaglesemanation/provider-digitalocean/config/namespaced/droplet"
+	imageNamespaced "github.com/eaglesemanation/provider-digitalocean/config/namespaced/image"
+	reservedipNamespaced "github.com/eaglesemanation/provider-digitalocean/config/namespaced/reservedip"
+	reservedipv6Namespaced "github.com/eaglesemanation/provider-digitalocean/config/namespaced/reservedipv6"
+	sshkeyNamespaced "github.com/eaglesemanation/provider-digitalocean/config/namespaced/sshkey"
 )
 
 const (
@@ -33,7 +41,11 @@ func GetProvider() *ujconfig.Provider {
 
 	for _, configure := range []func(provider *ujconfig.Provider){
 		// add custom config functions
-		nullCluster.Configure,
+		imageCluster.Configure,
+		sshkeyCluster.Configure,
+		dropletCluster.Configure,
+		reservedipCluster.Configure,
+		reservedipv6Cluster.Configure,
 	} {
 		configure(pc)
 	}
@@ -57,7 +69,11 @@ func GetProviderNamespaced() *ujconfig.Provider {
 
 	for _, configure := range []func(provider *ujconfig.Provider){
 		// add custom config functions
-		nullNamespaced.Configure,
+		imageNamespaced.Configure,
+		sshkeyNamespaced.Configure,
+		dropletNamespaced.Configure,
+		reservedipNamespaced.Configure,
+		reservedipv6Namespaced.Configure,
 	} {
 		configure(pc)
 	}

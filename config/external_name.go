@@ -7,17 +7,16 @@ import (
 // ExternalNameConfigs contains all external name configurations for this
 // provider.
 var ExternalNameConfigs = map[string]config.ExternalName{
-	// Import requires using a randomly generated ID from provider: nl-2e21sda
-	"null_resource": idWithStub(),
-}
+	"digitalocean_ssh_key": config.IdentifierFromProvider,
 
-func idWithStub() config.ExternalName {
-	e := config.IdentifierFromProvider
-	e.GetExternalNameFn = func(tfstate map[string]any) (string, error) {
-		en, _ := config.IDAsExternalName(tfstate)
-		return en, nil
-	}
-	return e
+	"digitalocean_custom_image": config.IdentifierFromProvider,
+
+	"digitalocean_droplet": config.IdentifierFromProvider,
+
+	"digitalocean_reserved_ip":              config.IdentifierFromProvider,
+	"digitalocean_reserved_ip_assignment":   config.TemplatedStringAsIdentifier("ip_address", "{{ .external_name }},{{ .parameters.droplet_id }}"),
+	"digitalocean_reserved_ipv6":            config.IdentifierFromProvider,
+	"digitalocean_reserved_ipv6_assignment": config.TemplatedStringAsIdentifier("ip", "{{ .external_name }},{{ .parameters.droplet_id }}"),
 }
 
 // ExternalNameConfigurations applies all external name configs listed in the
