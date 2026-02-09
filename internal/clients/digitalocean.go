@@ -22,6 +22,11 @@ const (
 	errTrackUsage           = "cannot track ProviderConfig usage"
 	errExtractCredentials   = "cannot extract credentials"
 	errUnmarshalCredentials = "cannot unmarshal digitalocean credentials as JSON"
+
+	// provider config keys
+	keyToken     = "token"
+	keySpacesId  = "spaces_access_id"
+	keySpacesKey = "spaces_secret_key"
 )
 
 // TerraformSetupBuilder builds Terraform a terraform.SetupFn function which
@@ -51,10 +56,16 @@ func TerraformSetupBuilder(version, providerSource, providerVersion string) terr
 		}
 
 		// Set credentials in Terraform provider configuration.
-		/*ps.Configuration = map[string]any{
-			"username": creds["username"],
-			"password": creds["password"],
-		}*/
+		ps.Configuration = map[string]any{}
+		if v, ok := creds[keyToken]; ok {
+			ps.Configuration[keyToken] = v
+		}
+		if v, ok := creds[keySpacesId]; ok {
+			ps.Configuration[keySpacesId] = v
+		}
+		if v, ok := creds[keySpacesKey]; ok {
+			ps.Configuration[keySpacesKey] = v
+		}
 		return ps, nil
 	}
 }
