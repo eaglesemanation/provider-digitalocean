@@ -10,7 +10,11 @@ package namespaced
 import (
 	"k8s.io/apimachinery/pkg/runtime"
 
-	v1alpha1 "github.com/eaglesemanation/provider-digitalocean/apis/namespaced/null/v1alpha1"
+	v1alpha1 "github.com/eaglesemanation/provider-digitalocean/apis/namespaced/droplet/v1alpha1"
+	v1alpha1image "github.com/eaglesemanation/provider-digitalocean/apis/namespaced/image/v1alpha1"
+	v1alpha1reservedip "github.com/eaglesemanation/provider-digitalocean/apis/namespaced/reservedip/v1alpha1"
+	v1alpha1reservedipv6 "github.com/eaglesemanation/provider-digitalocean/apis/namespaced/reservedipv6/v1alpha1"
+	v1alpha1sshkey "github.com/eaglesemanation/provider-digitalocean/apis/namespaced/sshkey/v1alpha1"
 	v1alpha1namespaced "github.com/eaglesemanation/provider-digitalocean/apis/namespaced/v1alpha1"
 	v1beta1 "github.com/eaglesemanation/provider-digitalocean/apis/namespaced/v1beta1"
 )
@@ -19,6 +23,10 @@ func init() {
 	// Register the types with the Scheme so the components can map objects to GroupVersionKinds and back
 	AddToSchemes = append(AddToSchemes,
 		v1alpha1.SchemeBuilder.AddToScheme,
+		v1alpha1image.SchemeBuilder.AddToScheme,
+		v1alpha1reservedip.SchemeBuilder.AddToScheme,
+		v1alpha1reservedipv6.SchemeBuilder.AddToScheme,
+		v1alpha1sshkey.SchemeBuilder.AddToScheme,
 		v1alpha1namespaced.SchemeBuilder.AddToScheme,
 		v1beta1.SchemeBuilder.AddToScheme,
 	)

@@ -1,0 +1,11 @@
+apiVersion: reservedipv6.digitalocean.crossplane.io/v1alpha1
+kind: IPv6
+metadata:
+  annotations:
+    meta.upbound.io/example-id: reservedipv6/v1alpha1/ipv6
+  labels:
+    testing.upbound.io/example-name: foobar
+  name: foobar
+spec:
+  forProvider:
+    regionSlug: nyc3
