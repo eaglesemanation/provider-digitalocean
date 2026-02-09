@@ -1,21 +1,31 @@
-# Provider Template
+# Provider DigitalOcean
 
-`upjet-provider-template` is a [Crossplane](https://crossplane.io/) provider
-template that is built using [Upjet](https://github.com/crossplane/upjet) code
-generation tools and exposes XRM-conformant managed resources for the Template
+`provider-digitalocean` is a [Crossplane](https://crossplane.io/) provider
+that is built using [Upjet](https://github.com/crossplane/upjet) code
+generation tools and exposes XRM-conformant managed resources for the DigitalOcean
 API.
 
 ## Getting Started
 
-This template serves as a starting point for generating a new [Crossplane Provider](https://docs.crossplane.io/latest/packages/providers/) using the [`upjet`](https://github.com/crossplane/upjet) tooling. Please follow the guide linked below to generate a new Provider:
+Install using declarative installation:
+```
+cat <<EOF | kubectl apply -f -
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-minio
+spec:
+  package: ghcr.io/eaglesemanation/provider-digitalocean:v0.1.0
+EOF
+```
 
-https://github.com/crossplane/upjet/blob/main/docs/generating-a-provider.md
+You can see the API reference here: https://doc.crds.dev/github.com/eaglesemanation/provider-digitalocean@v0.1.0
 
 ## Developing
 
 Run code-generation pipeline:
 ```console
-go run cmd/generator/main.go "$PWD"
+make generate
 ```
 
 Run against a Kubernetes cluster:
@@ -39,4 +49,4 @@ make build
 ## Report a Bug
 
 For filing bugs, suggesting improvements, or requesting new features, please
-open an [issue](https://github.com/crossplane/upjet-provider-template/issues).
+open an [issue](https://github.com/eaglesemanation/provider-digitalocean/issues).
