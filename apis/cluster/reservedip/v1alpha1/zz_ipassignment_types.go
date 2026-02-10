@@ -14,6 +14,30 @@ import (
 )
 
 type IPAssignmentInitParameters struct {
+
+	// The ID of Droplet that the reserved IP will be assigned to.
+	// +crossplane:generate:reference:type=github.com/eaglesemanation/provider-digitalocean/apis/cluster/droplet/v1alpha1.Droplet
+	DropletID *float64 `json:"dropletId,omitempty" tf:"droplet_id,omitempty"`
+
+	// Reference to a Droplet in droplet to populate dropletId.
+	// +kubebuilder:validation:Optional
+	DropletIDRef *v1.Reference `json:"dropletIdRef,omitempty" tf:"-"`
+
+	// Selector for a Droplet in droplet to populate dropletId.
+	// +kubebuilder:validation:Optional
+	DropletIDSelector *v1.Selector `json:"dropletIdSelector,omitempty" tf:"-"`
+
+	// The reserved IP to assign to the Droplet.
+	// +crossplane:generate:reference:type=github.com/eaglesemanation/provider-digitalocean/apis/cluster/reservedip/v1alpha1.IP
+	IPAddress *string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
+
+	// Reference to a IP in reservedip to populate ipAddress.
+	// +kubebuilder:validation:Optional
+	IPAddressRef *v1.Reference `json:"ipAddressRef,omitempty" tf:"-"`
+
+	// Selector for a IP in reservedip to populate ipAddress.
+	// +kubebuilder:validation:Optional
+	IPAddressSelector *v1.Selector `json:"ipAddressSelector,omitempty" tf:"-"`
 }
 
 type IPAssignmentObservation struct {

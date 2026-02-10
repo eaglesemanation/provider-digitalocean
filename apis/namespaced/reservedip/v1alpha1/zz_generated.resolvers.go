@@ -99,5 +99,39 @@ func (mg *IPAssignment) ResolveReferences(ctx context.Context, c client.Reader) 
 	mg.Spec.ForProvider.IPAddress = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.IPAddressRef = rsp.ResolvedReference
 
+	rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+		CurrentValue: reference.FromFloatPtrValue(mg.Spec.InitProvider.DropletID),
+		Extract:      reference.ExternalName(),
+		Namespace:    mg.GetNamespace(),
+		Reference:    mg.Spec.InitProvider.DropletIDRef,
+		Selector:     mg.Spec.InitProvider.DropletIDSelector,
+		To: reference.To{
+			List:    &v1alpha1.DropletList{},
+			Managed: &v1alpha1.Droplet{},
+		},
+	})
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.DropletID")
+	}
+	mg.Spec.InitProvider.DropletID = reference.ToFloatPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.DropletIDRef = rsp.ResolvedReference
+
+	rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+		CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.IPAddress),
+		Extract:      reference.ExternalName(),
+		Namespace:    mg.GetNamespace(),
+		Reference:    mg.Spec.InitProvider.IPAddressRef,
+		Selector:     mg.Spec.InitProvider.IPAddressSelector,
+		To: reference.To{
+			List:    &IPList{},
+			Managed: &IP{},
+		},
+	})
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.IPAddress")
+	}
+	mg.Spec.InitProvider.IPAddress = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.IPAddressRef = rsp.ResolvedReference
+
 	return nil
 }
