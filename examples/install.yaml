@@ -1,6 +1,0 @@
-apiVersion: pkg.crossplane.io/v1
-kind: Provider
-metadata:
-  name: provider-digitalocean
-spec:
-  package: ghcr.io/eaglesemanation/provider-digitalocean:v0.1.0

@@ -1,0 +1,16 @@
+apiVersion: reservedip.digitalocean.m.crossplane.io/v1alpha1
+kind: IPAssignment
+metadata:
+  name: example-crossplane-ipassignment
+  namespace: crossplane-system
+spec:
+  forProvider:
+    dropletIdRef:
+      name: example-crossplane-droplet
+      namespace: crossplane-system
+    ipAddressRef:
+      name: example-crossplane-ip
+      namespace: crossplane-system
+  providerConfigRef:
+    kind: ProviderConfig
+    name: digitalocean

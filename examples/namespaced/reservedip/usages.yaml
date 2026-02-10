@@ -1,0 +1,33 @@
+apiVersion: protection.crossplane.io/v1beta1
+kind: Usage
+metadata:
+  name: ipassignment-uses-ip
+  namespace: crossplane-system
+spec:
+  of:
+    apiVersion: reservedip.digitalocean.m.crossplane.io/v1alpha1
+    kind: IP
+    resourceRef:
+      name: example-crossplane-ip
+  by:
+    apiVersion: reservedip.digitalocean.m.crossplane.io/v1alpha1
+    kind: IPAssignment
+    resourceRef:
+      name: example-crossplane-ipassignment
+---
+apiVersion: protection.crossplane.io/v1beta1
+kind: Usage
+metadata:
+  name: ipassignment-uses-droplet
+  namespace: crossplane-system
+spec:
+  of:
+    apiVersion: droplet.digitalocean.m.crossplane.io/v1alpha1
+    kind: Droplet
+    resourceRef:
+      name: example-crossplane-droplet
+  by:
+    apiVersion: reservedip.digitalocean.m.crossplane.io/v1alpha1
+    kind: IPAssignment
+    resourceRef:
+      name: example-crossplane-ipassignment

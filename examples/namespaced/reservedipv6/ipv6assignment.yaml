@@ -1,0 +1,16 @@
+apiVersion: reservedipv6.digitalocean.m.crossplane.io/v1alpha1
+kind: IPv6Assignment
+metadata:
+  name: example-crossplane-ipv6assignment
+  namespace: crossplane-system
+spec:
+  forProvider:
+    dropletIdRef:
+      name: example-crossplane-droplet
+      namespace: crossplane-system
+    ipRef:
+      name: example-crossplane-ipv6
+      namespace: crossplane-system
+  providerConfigRef:
+    kind: ProviderConfig
+    name: digitalocean

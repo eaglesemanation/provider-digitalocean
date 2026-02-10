@@ -1,0 +1,11 @@
+apiVersion: reservedip.digitalocean.m.crossplane.io/v1alpha1
+kind: IP
+metadata:
+  name: example-crossplane-ip
+  namespace: crossplane-system
+spec:
+  forProvider:
+    region: nyc1
+  providerConfigRef:
+    kind: ProviderConfig
+    name: digitalocean

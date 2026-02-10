@@ -1,0 +1,15 @@
+apiVersion: droplet.digitalocean.m.crossplane.io/v1alpha1
+kind: Droplet
+metadata:
+  name: example-crossplane-droplet
+  namespace: crossplane-system
+spec:
+  forProvider:
+    name: example-crossplane
+    image: ubuntu-25-10-x64
+    size: s-1vcpu-512mb-10gb
+    region: nyc1
+    ipv6: true
+  providerConfigRef:
+    kind: ProviderConfig
+    name: digitalocean

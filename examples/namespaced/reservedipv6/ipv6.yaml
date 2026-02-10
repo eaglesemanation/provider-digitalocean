@@ -1,0 +1,11 @@
+apiVersion: reservedipv6.digitalocean.m.crossplane.io/v1alpha1
+kind: IPv6
+metadata:
+  name: example-crossplane-ipv6
+  namespace: crossplane-system
+spec:
+  forProvider:
+    regionSlug: nyc1
+  providerConfigRef:
+    kind: ProviderConfig
+    name: digitalocean
