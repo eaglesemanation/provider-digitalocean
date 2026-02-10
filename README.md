@@ -15,11 +15,11 @@ kind: Provider
 metadata:
   name: provider-minio
 spec:
-  package: ghcr.io/eaglesemanation/provider-digitalocean:v0.1.0
+  package: ghcr.io/eaglesemanation/provider-digitalocean:v0.1.1
 EOF
 ```
 
-You can see the API reference here: https://doc.crds.dev/github.com/eaglesemanation/provider-digitalocean@v0.1.0
+You can see the API reference here: https://doc.crds.dev/github.com/eaglesemanation/provider-digitalocean@v0.1.1
 
 ## Developing
 

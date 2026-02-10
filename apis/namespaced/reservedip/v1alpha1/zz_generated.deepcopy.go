@@ -272,11 +272,6 @@ func (in *IPInitParameters) DeepCopyInto(out *IPInitParameters) {
 		*out = new(v1.NamespacedSelector)
 		(*in).DeepCopyInto(*out)
 	}
-	if in.IPAddress != nil {
-		in, out := &in.IPAddress, &out.IPAddress
-		*out = new(string)
-		**out = **in
-	}
 	if in.Region != nil {
 		in, out := &in.Region, &out.Region
 		*out = new(string)
@@ -339,11 +334,6 @@ func (in *IPObservation) DeepCopyInto(out *IPObservation) {
 		*out = new(string)
 		**out = **in
 	}
-	if in.IPAddress != nil {
-		in, out := &in.IPAddress, &out.IPAddress
-		*out = new(string)
-		**out = **in
-	}
 	if in.Region != nil {
 		in, out := &in.Region, &out.Region
 		*out = new(string)
@@ -383,11 +373,6 @@ func (in *IPParameters) DeepCopyInto(out *IPParameters) {
 		in, out := &in.DropletIDSelector, &out.DropletIDSelector
 		*out = new(v1.NamespacedSelector)
 		(*in).DeepCopyInto(*out)
-	}
-	if in.IPAddress != nil {
-		in, out := &in.IPAddress, &out.IPAddress
-		*out = new(string)
-		**out = **in
 	}
 	if in.Region != nil {
 		in, out := &in.Region, &out.Region

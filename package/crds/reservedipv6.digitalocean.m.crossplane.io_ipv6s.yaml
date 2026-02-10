@@ -60,8 +60,6 @@ spec:
                 properties:
                   dropletId:
                     type: number
-                  ip:
-                    type: string
                   regionSlug:
                     description: The region that the reserved IPv6 needs to be reserved
                       to.
@@ -82,8 +80,6 @@ spec:
                 properties:
                   dropletId:
                     type: number
-                  ip:
-                    type: string
                   regionSlug:
                     description: The region that the reserved IPv6 needs to be reserved
                       to.
@@ -160,8 +156,6 @@ spec:
                   dropletId:
                     type: number
                   id:
-                    type: string
-                  ip:
                     type: string
                   regionSlug:
                     description: The region that the reserved IPv6 needs to be reserved
