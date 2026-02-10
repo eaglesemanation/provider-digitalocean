@@ -23,6 +23,9 @@ type IPAssignmentObservation struct {
 	DropletID *float64 `json:"dropletId,omitempty" tf:"droplet_id,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
+
+	// The reserved IP to assign to the Droplet.
+	IPAddress *string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
 }
 
 type IPAssignmentParameters struct {
@@ -39,6 +42,19 @@ type IPAssignmentParameters struct {
 	// Selector for a Droplet in droplet to populate dropletId.
 	// +kubebuilder:validation:Optional
 	DropletIDSelector *v1.NamespacedSelector `json:"dropletIdSelector,omitempty" tf:"-"`
+
+	// The reserved IP to assign to the Droplet.
+	// +crossplane:generate:reference:type=github.com/eaglesemanation/provider-digitalocean/apis/namespaced/reservedip/v1alpha1.IP
+	// +kubebuilder:validation:Optional
+	IPAddress *string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
+
+	// Reference to a IP in reservedip to populate ipAddress.
+	// +kubebuilder:validation:Optional
+	IPAddressRef *v1.NamespacedReference `json:"ipAddressRef,omitempty" tf:"-"`
+
+	// Selector for a IP in reservedip to populate ipAddress.
+	// +kubebuilder:validation:Optional
+	IPAddressSelector *v1.NamespacedSelector `json:"ipAddressSelector,omitempty" tf:"-"`
 }
 
 // IPAssignmentSpec defines the desired state of IPAssignment

@@ -11,6 +11,9 @@ spec:
     dropletIdSelector:
       matchLabels:
         testing.upbound.io/example-name: foobar
+    ipSelector:
+      matchLabels:
+        testing.upbound.io/example-name: foobar
 
 ---
 

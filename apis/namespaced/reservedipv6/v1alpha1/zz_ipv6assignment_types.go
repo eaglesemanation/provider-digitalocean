@@ -23,6 +23,9 @@ type IPv6AssignmentObservation struct {
 	DropletID *float64 `json:"dropletId,omitempty" tf:"droplet_id,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
+
+	// The reserved IPv6 to assign to the Droplet.
+	IP *string `json:"ip,omitempty" tf:"ip,omitempty"`
 }
 
 type IPv6AssignmentParameters struct {
@@ -39,6 +42,19 @@ type IPv6AssignmentParameters struct {
 	// Selector for a Droplet in droplet to populate dropletId.
 	// +kubebuilder:validation:Optional
 	DropletIDSelector *v1.NamespacedSelector `json:"dropletIdSelector,omitempty" tf:"-"`
+
+	// The reserved IPv6 to assign to the Droplet.
+	// +crossplane:generate:reference:type=github.com/eaglesemanation/provider-digitalocean/apis/namespaced/reservedipv6/v1alpha1.IPv6
+	// +kubebuilder:validation:Optional
+	IP *string `json:"ip,omitempty" tf:"ip,omitempty"`
+
+	// Reference to a IPv6 in reservedipv6 to populate ip.
+	// +kubebuilder:validation:Optional
+	IPRef *v1.NamespacedReference `json:"ipRef,omitempty" tf:"-"`
+
+	// Selector for a IPv6 in reservedipv6 to populate ip.
+	// +kubebuilder:validation:Optional
+	IPSelector *v1.NamespacedSelector `json:"ipSelector,omitempty" tf:"-"`
 }
 
 // IPv6AssignmentSpec defines the desired state of IPv6Assignment

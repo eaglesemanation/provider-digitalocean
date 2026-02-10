@@ -38,5 +38,22 @@ func (mg *IPv6Assignment) ResolveReferences(ctx context.Context, c client.Reader
 	mg.Spec.ForProvider.DropletID = reference.ToFloatPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.DropletIDRef = rsp.ResolvedReference
 
+	rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+		CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.IP),
+		Extract:      reference.ExternalName(),
+		Namespace:    mg.GetNamespace(),
+		Reference:    mg.Spec.ForProvider.IPRef,
+		Selector:     mg.Spec.ForProvider.IPSelector,
+		To: reference.To{
+			List:    &IPv6List{},
+			Managed: &IPv6{},
+		},
+	})
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.IP")
+	}
+	mg.Spec.ForProvider.IP = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.IPRef = rsp.ResolvedReference
+
 	return nil
 }
