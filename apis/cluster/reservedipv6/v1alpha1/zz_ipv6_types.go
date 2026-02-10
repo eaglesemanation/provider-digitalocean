@@ -16,6 +16,8 @@ import (
 type IPv6InitParameters struct {
 	DropletID *float64 `json:"dropletId,omitempty" tf:"droplet_id,omitempty"`
 
+	IP *string `json:"ip,omitempty" tf:"ip,omitempty"`
+
 	// The region that the reserved IPv6 needs to be reserved to.
 	RegionSlug *string `json:"regionSlug,omitempty" tf:"region_slug,omitempty"`
 }
@@ -24,6 +26,8 @@ type IPv6Observation struct {
 	DropletID *float64 `json:"dropletId,omitempty" tf:"droplet_id,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
+
+	IP *string `json:"ip,omitempty" tf:"ip,omitempty"`
 
 	// The region that the reserved IPv6 needs to be reserved to.
 	RegionSlug *string `json:"regionSlug,omitempty" tf:"region_slug,omitempty"`
@@ -36,6 +40,9 @@ type IPv6Parameters struct {
 
 	// +kubebuilder:validation:Optional
 	DropletID *float64 `json:"dropletId,omitempty" tf:"droplet_id,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	IP *string `json:"ip,omitempty" tf:"ip,omitempty"`
 
 	// The region that the reserved IPv6 needs to be reserved to.
 	// +kubebuilder:validation:Optional

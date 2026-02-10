@@ -30,7 +30,7 @@ make generate
 
 Test an example against a Kind k8s cluster (provider config is included through setup.sh):
 ```console
-make e2e UPTEST_EXAMPLE_LIST="examples/namespaced/droplet/droplet.yaml,examples/namespaced/reservedip/ipassignment.yaml,examples/namespaced/reservedip/ip.yaml,examples/namespaced/reservedipv6/ipv6assignment.yaml,examples/namespaced/reservedipv6/ipv6.yaml"
+make e2e UPTEST_EXAMPLE_LIST="examples/namespaced/droplet/droplet.yaml,examples/namespaced/reservedip/ip.yaml,examples/namespaced/reservedip/ipassignment.yaml,examples/namespaced/reservedipv6/ipv6.yaml,examples/namespaced/reservedipv6/ipv6assignment.yaml"
 kind delete cluster -n local-dev
 ```
 

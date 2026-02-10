@@ -150,6 +150,9 @@ spec:
                             type: string
                         type: object
                     type: object
+                  ipAddress:
+                    description: The IP Address of the resource
+                    type: string
                   region:
                     description: The region that the reserved IP is reserved to.
                     type: string
@@ -245,6 +248,9 @@ spec:
                             type: string
                         type: object
                     type: object
+                  ipAddress:
+                    description: The IP Address of the resource
+                    type: string
                   region:
                     description: The region that the reserved IP is reserved to.
                     type: string
@@ -350,6 +356,9 @@ spec:
                       to.
                     type: number
                   id:
+                    type: string
+                  ipAddress:
+                    description: The IP Address of the resource
                     type: string
                   region:
                     description: The region that the reserved IP is reserved to.

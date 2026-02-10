@@ -13,9 +13,9 @@ var ExternalNameConfigs = map[string]config.ExternalName{
 
 	"digitalocean_droplet": config.IdentifierFromProvider,
 
-	"digitalocean_reserved_ip":              config.ParameterAsIdentifier("ip_address"),
+	"digitalocean_reserved_ip":              config.IdentifierFromProvider,
 	"digitalocean_reserved_ip_assignment":   config.IdentifierFromProvider,
-	"digitalocean_reserved_ipv6":            config.ParameterAsIdentifier("ip"),
+	"digitalocean_reserved_ipv6":            config.IdentifierFromProvider,
 	"digitalocean_reserved_ipv6_assignment": config.IdentifierFromProvider,
 }
 

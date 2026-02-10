@@ -262,6 +262,11 @@ func (in *IPv6InitParameters) DeepCopyInto(out *IPv6InitParameters) {
 		*out = new(float64)
 		**out = **in
 	}
+	if in.IP != nil {
+		in, out := &in.IP, &out.IP
+		*out = new(string)
+		**out = **in
+	}
 	if in.RegionSlug != nil {
 		in, out := &in.RegionSlug, &out.RegionSlug
 		*out = new(string)
@@ -324,6 +329,11 @@ func (in *IPv6Observation) DeepCopyInto(out *IPv6Observation) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.IP != nil {
+		in, out := &in.IP, &out.IP
+		*out = new(string)
+		**out = **in
+	}
 	if in.RegionSlug != nil {
 		in, out := &in.RegionSlug, &out.RegionSlug
 		*out = new(string)
@@ -352,6 +362,11 @@ func (in *IPv6Parameters) DeepCopyInto(out *IPv6Parameters) {
 	if in.DropletID != nil {
 		in, out := &in.DropletID, &out.DropletID
 		*out = new(float64)
+		**out = **in
+	}
+	if in.IP != nil {
+		in, out := &in.IP, &out.IP
+		*out = new(string)
 		**out = **in
 	}
 	if in.RegionSlug != nil {
