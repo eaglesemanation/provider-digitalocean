@@ -27,9 +27,6 @@ type IPInitParameters struct {
 	// +kubebuilder:validation:Optional
 	DropletIDSelector *v1.Selector `json:"dropletIdSelector,omitempty" tf:"-"`
 
-	// The IP Address of the resource
-	IPAddress *string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
-
 	// The region that the reserved IP is reserved to.
 	Region *string `json:"region,omitempty" tf:"region,omitempty"`
 }
@@ -40,9 +37,6 @@ type IPObservation struct {
 	DropletID *float64 `json:"dropletId,omitempty" tf:"droplet_id,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
-
-	// The IP Address of the resource
-	IPAddress *string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
 
 	// The region that the reserved IP is reserved to.
 	Region *string `json:"region,omitempty" tf:"region,omitempty"`
@@ -66,10 +60,6 @@ type IPParameters struct {
 	// Selector for a Droplet in droplet to populate dropletId.
 	// +kubebuilder:validation:Optional
 	DropletIDSelector *v1.Selector `json:"dropletIdSelector,omitempty" tf:"-"`
-
-	// The IP Address of the resource
-	// +kubebuilder:validation:Optional
-	IPAddress *string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
 
 	// The region that the reserved IP is reserved to.
 	// +kubebuilder:validation:Optional

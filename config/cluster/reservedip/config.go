@@ -8,6 +8,7 @@ func Configure(p *config.Provider) {
 		r.References["droplet_id"] = config.Reference{
 			TerraformName: "digitalocean_droplet",
 		}
+		r.ExternalName.OmittedFields = append(r.ExternalName.OmittedFields, "ip_address")
 	})
 	p.AddResourceConfigurator("digitalocean_reserved_ip_assignment", func(r *config.Resource) {
 		r.ShortGroup = "reservedip"
