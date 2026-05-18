@@ -1,4 +1,4 @@
-apiVersion: reservedipv6.digitalocean.m.crossplane.io/v1alpha1
+apiVersion: digitalocean.m.crossplane.io/v1alpha1
 kind: IPv6
 metadata:
   name: example-crossplane-ipv6

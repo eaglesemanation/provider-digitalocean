@@ -1,4 +1,4 @@
-apiVersion: reservedip.digitalocean.m.crossplane.io/v1alpha1
+apiVersion: digitalocean.m.crossplane.io/v1alpha1
 kind: IPAssignment
 metadata:
   name: example-crossplane-ipassignment

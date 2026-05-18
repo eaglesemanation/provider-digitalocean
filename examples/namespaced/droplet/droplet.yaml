@@ -1,4 +1,4 @@
-apiVersion: droplet.digitalocean.m.crossplane.io/v1alpha1
+apiVersion: digitalocean.m.crossplane.io/v1alpha1
 kind: Droplet
 metadata:
   name: example-crossplane-droplet

@@ -13,13 +13,13 @@ cat <<EOF | kubectl apply -f -
 apiVersion: pkg.crossplane.io/v1
 kind: Provider
 metadata:
-  name: provider-minio
+  name: provider-digitalocean
 spec:
-  package: ghcr.io/eaglesemanation/provider-digitalocean:v0.1.2
+  package: ghcr.io/eaglesemanation/provider-digitalocean:v0.1.3
 EOF
 ```
 
-You can see the API reference here: https://doc.crds.dev/github.com/eaglesemanation/provider-digitalocean@v0.1.2
+You can see the API reference here: https://doc.crds.dev/github.com/eaglesemanation/provider-digitalocean@v0.1.3
 
 ## Developing
 
@@ -30,7 +30,7 @@ make generate
 
 Test an example against a Kind k8s cluster (provider config is included through setup.sh):
 ```console
-make e2e UPTEST_EXAMPLE_LIST="examples/namespaced/droplet/droplet.yaml,examples/namespaced/reservedip/ip.yaml,examples/namespaced/reservedip/ipassignment.yaml,examples/namespaced/reservedipv6/ipv6.yaml,examples/namespaced/reservedipv6/ipv6assignment.yaml"
+make e2e UPTEST_EXAMPLE_LIST="$(find examples/namespaced/ -iname '*.yaml' -not -name 'providerconfig.yaml' | paste -sd ',')"
 kind delete cluster -n local-dev
 ```
 
